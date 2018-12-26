@@ -47,7 +47,7 @@ class Encryption implements EncryptionInterface
     {
         
         if (is_null($this->instance)) {
-            $this->instance = new Encrpyter($key, $chipher);
+            $this->instance = new Encrypter($key, $chipher);
             if (is_null($key)) {
                 $key = $this->instance->generateKey($cipher);
             }
@@ -69,7 +69,7 @@ class Encryption implements EncryptionInterface
     {
         
         if (is_null($this->instance)) {
-            $this->instance = new Encrpyter($key, $chipher);
+            $this->instance = new Encrypter($key, $chipher);
             if (is_null($key)) {
                 $key = $this->instance->generateKey($cipher);
             }
