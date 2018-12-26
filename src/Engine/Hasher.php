@@ -55,7 +55,7 @@ class Hasher implements HasherInterface
      *
      * @return void Returns nothing.
      */
-    public function configureOptions(OptionsResolver $resolver): void
+    private function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
             'algo' => 'bcrypt',
