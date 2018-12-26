@@ -31,16 +31,16 @@ if ($_ENV['APP_DEBUG'])
 $dir = __DIR__ . '/config/';
 
 // Load the configuration files.
-$config[] = Yaml::parseFile($dir . 'hasher.yml');
+$config['hasher'] = Yaml::parseFile($dir . 'hasher.yml');
 
 // Create a new container.
 $containerBuilder = new ContainerBuilder();
 
 // Set parameters.
-$containerBuilder->setParameter('hasher.options', $config['hasher']);
+$containerBuilder->setParameter('hasher.options', $config['hasher']['hasher']);
 
 // Initiate a hash manager.
-$containerBuilder->register('hasher', 'XChess\Engine\Hasher')->addArgument('%hasher.options%');;
+$containerBuilder->register('hasher', 'XChess\Engine\Hasher')->addArgument('%hasher.options%');
 
 // Initiate a encrypter.
 $containerBuilder->register('encrypter', 'XChess\Engine\Encryption');
