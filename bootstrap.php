@@ -10,7 +10,16 @@ declare(strict_types=1);
  * @link <https://github.com/XChess> XChess Code.
  */
 
+use Symfony\Component\Debug\Debug;
+use Symfony\Component\Dotenv\Dotenv;
+
 require_once __DIR__ . '/vendor/autoload.php';
 
 // Load the dotenv configuration file.
 (new Dotenv())->load(__DIR__ . '/xchess.env');
+
+// Determine if we should run in debug mode.
+if ($_ENV['DEBUG'])
+{
+    Debug::enable();
+}
