@@ -65,7 +65,7 @@ class Encryption implements EncryptionInterface
      *
      * @return mixed Returns the decrypted data.
      */
-    public function encrypt($data, string $key = null, $chipher = null, $unserialize = true)
+    public function decrypt($data, string $key = null, $chipher = null, $unserialize = true)
     {
         
         if (is_null($this->instance)) {
