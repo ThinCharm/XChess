@@ -1,6 +1,6 @@
 {
-    "name": "xchess/xchess"
-    "description": "",
+    "name": "xchess/xchess",
+    "description": "The worlds best chess playing website.",
     "keywords": [],
     "require": {
         "egulias/email-validator": "^2.1",
