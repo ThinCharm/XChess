@@ -46,7 +46,7 @@ class Encryption implements EncryptionInterface
      *
      * @return mixed Returns the encrypted data.
      */
-    public function encrypt($data, string $key = null, $chipher = null, $serialize = true)
+    public function encrypt($data, string $key = null, $chipher = 'AES-128-CBC', $serialize = true)
     {
         if (is_null($key)) {
             $key = random_bytes($cipher === 'AES-128-CBC' ? 16 : 32);
@@ -67,7 +67,7 @@ class Encryption implements EncryptionInterface
      *
      * @return mixed Returns the decrypted data.
      */
-    public function decrypt($data, string $key = null, $chipher = null, $unserialize = true)
+    public function decrypt($data, string $key = null, $chipher = 'AES-128-CBC', $unserialize = true)
     {
         if (is_null($key)) {
             $key = random_bytes($cipher === 'AES-128-CBC' ? 16 : 32);
