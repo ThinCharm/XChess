@@ -47,5 +47,5 @@ interface EncryptionInterface
      *
      * @return mixed Returns the decrypted data.
      */
-    public function encrypt($data, string $key = null, $chipher = null, $unserialize = true);
+    public function decrypt($data, string $key = null, $chipher = null, $unserialize = true);
 }
