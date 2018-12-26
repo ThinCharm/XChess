@@ -31,13 +31,13 @@ if ($_ENV['APP_DEBUG'])
 $dir = __DIR__ . '/config/';
 
 // Load the configuration files.
-$config['security'] = Yaml::parseFile($dir . 'security.yml');
+$config[] = Yaml::parseFile($dir . 'hasher.yml');
 
 // Create a new container.
 $containerBuilder = new ContainerBuilder();
 
 // Set parameters.
-$containerBuilder->setParameter('hasher.options', $config['security']['hasher']);
+$containerBuilder->setParameter('hasher.options', $config['hasher']);
 
 // Initiate a hash manager.
 $containerBuilder->register('hasher', 'XChess\Engine\Hasher')->addArgument('%hasher.options%');;
