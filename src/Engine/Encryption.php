@@ -14,6 +14,9 @@ namespace XChess\Engine;
 
 use Illuminate\Encryption\Encrypter;
 
+use function random_bytes;
+use function is_null;
+
 /**
  * The encrypter.
  */
@@ -45,12 +48,11 @@ class Encryption implements EncryptionInterface
      */
     public function encrypt($data, string $key = null, $chipher = null, $serialize = true)
     {
-        
+        if (is_null($key)) {
+            $key = random_bytes($cipher === 'AES-128-CBC' ? 16 : 32);
+        }
         if (is_null($this->instance)) {
             $this->instance = new Encrypter($key, $chipher);
-            if (is_null($key)) {
-                $key = $this->instance->generateKey($cipher);
-            }
         }
         return $this->instance->encrypt($data, $serialize);
     }
@@ -67,12 +69,11 @@ class Encryption implements EncryptionInterface
      */
     public function decrypt($data, string $key = null, $chipher = null, $unserialize = true)
     {
-        
+        if (is_null($key)) {
+            $key = random_bytes($cipher === 'AES-128-CBC' ? 16 : 32);
+        }
         if (is_null($this->instance)) {
             $this->instance = new Encrypter($key, $chipher);
-            if (is_null($key)) {
-                $key = $this->instance->generateKey($cipher);
-            }
         }
         return $this->instance->decrypt($data, $unserialize);
     }
