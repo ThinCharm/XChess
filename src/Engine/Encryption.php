@@ -41,18 +41,18 @@ class Encryption implements EncryptionInterface
      *
      * @param mixed  $data      The data to encrypt.
      * @param string $key       The encryption key.
-     * @param string $chiper    The encryption chipher
+     * @param string $cipher    The encryption chipher
      * @param bool   $serialize Determines if we serialize or not.
      *
      * @return mixed Returns the encrypted data.
      */
-    public function encrypt($data, string $key = null, $chipher = 'AES-128-CBC', $serialize = true)
+    public function encrypt($data, string $key = null, $cipher = 'AES-128-CBC', $serialize = true)
     {
         if (is_null($key)) {
             $key = random_bytes($cipher === 'AES-128-CBC' ? 16 : 32);
         }
         if (is_null($this->instance)) {
-            $this->instance = new Encrypter($key, $chipher);
+            $this->instance = new Encrypter($key, $cipher);
         }
         return $this->instance->encrypt($data, $serialize);
     }
@@ -62,18 +62,18 @@ class Encryption implements EncryptionInterface
      *
      * @param mixed  $encrypted The data to decrypt.
      * @param string $key       The encryption key.
-     * @param string $chiper    The encryption chipher
+     * @param string $cipher    The encryption chipher
      * @param bool   $serialize Determines if we unserialize or not.
      *
      * @return mixed Returns the decrypted data.
      */
-    public function decrypt($data, string $key = null, $chipher = 'AES-128-CBC', $unserialize = true)
+    public function decrypt($data, string $key = null, $cipher = 'AES-128-CBC', $unserialize = true)
     {
         if (is_null($key)) {
             $key = random_bytes($cipher === 'AES-128-CBC' ? 16 : 32);
         }
         if (is_null($this->instance)) {
-            $this->instance = new Encrypter($key, $chipher);
+            $this->instance = new Encrypter($key, $cipher);
         }
         return $this->instance->decrypt($data, $unserialize);
     }
