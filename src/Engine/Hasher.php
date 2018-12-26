@@ -16,6 +16,7 @@ use Illuminate\Hashing\Argon2IdHasher;
 use Illuminate\Hashing\ArgonHasher;
 use Illuminate\Hashing\BcryptHasher;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use UnexpectedValueException;
 
 use const PASSWORD_ARGON2_DEFAULT_MEMORY_COST;
 use const PASSWORD_ARGON2_DEFAULT_TIME_COST;
@@ -129,6 +130,8 @@ class Hasher implements HasherInterface
                 'threads' => $this->options['threads'],
                 'verify' => true
             ]);
+        } else {
+            throw new UnexpectedValueException('Could not determine the hash algo.');
         }
     }
 }
