@@ -1,0 +1,6 @@
+hasher:
+    algo: bcrypt
+    cost: 10
+    memory_cost: null
+    time_cost: null
+    threads: null
