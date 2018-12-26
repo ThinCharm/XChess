@@ -32,3 +32,10 @@ $containerBuilder = new ContainerBuilder();
 
 // Initiate a hash manager.
 $containerBuilder->register('hasher', 'XChess\Engine\Hasher');
+
+// Make the container accessable through a function.
+function app(string $service)
+{
+    global $containerBuilder;
+    return $containerBuilder[$service];
+}
