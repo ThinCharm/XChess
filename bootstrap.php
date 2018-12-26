@@ -10,6 +10,7 @@ declare(strict_types=1);
  * @link <https://github.com/XChess> XChess Code.
  */
 
+use Illuminate\Hashing\HashManager;
 use Symfony\Component\Debug\Debug;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Reference;
@@ -26,3 +27,8 @@ if ($_ENV['APP_DEBUG'])
     Debug::enable();
 }
 
+// Create a new container.
+$containerBuilder = new ContainerBuilder();
+
+// Initiate a hash manager.
+$containerBuilder->register('hasher', 'XChess\Engine\Hasher');
