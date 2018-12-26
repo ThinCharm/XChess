@@ -13,9 +13,9 @@ declare(strict_types=1);
 namespace XChess\Engine;
 
 /**
- * The password hasher.
+ * The hasher interface.
  */
-class Hasher implements HasherInterface
+interface HasherInterface
 {
 
     /**
