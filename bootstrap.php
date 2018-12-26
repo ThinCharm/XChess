@@ -10,7 +10,6 @@ declare(strict_types=1);
  * @link <https://github.com/XChess> XChess Code.
  */
 
-use Illuminate\Hashing\HashManager;
 use Symfony\Component\Debug\Debug;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Reference;
