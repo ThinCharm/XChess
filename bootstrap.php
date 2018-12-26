@@ -11,6 +11,8 @@ declare(strict_types=1);
  */
 
 use Symfony\Component\Debug\Debug;
+use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Component\DependencyInjection\Reference;
 use Symfony\Component\Dotenv\Dotenv;
 
 require_once __DIR__ . '/vendor/autoload.php';
@@ -19,7 +21,8 @@ require_once __DIR__ . '/vendor/autoload.php';
 (new Dotenv())->load(__DIR__ . '/xchess.env');
 
 // Determine if we should run in debug mode.
-if ($_ENV['DEBUG'])
+if ($_ENV['APP_DEBUG'])
 {
     Debug::enable();
 }
+
