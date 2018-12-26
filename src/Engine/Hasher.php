@@ -23,7 +23,7 @@ use const PASSWORD_ARGON2_DEFAULT_TIME_COST;
 use const PASSWORD_ARGON2_DEFAULT_THREADS;
 
 /**
- * The password hasher.
+ * The hasher.
  */
 class Hasher implements HasherInterface
 {
