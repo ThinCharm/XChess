@@ -89,7 +89,7 @@ class Hasher implements HasherInterface
      */
     public function verify(string $text, string $hash): bool
     {
-        return $this->instance->check($text, $hash)
+        return $this->instance->check($text, $hash);
     }
 
     /**
