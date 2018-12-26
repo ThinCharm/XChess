@@ -14,6 +14,8 @@ use Symfony\Component\Debug\Debug;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Reference;
 use Symfony\Component\Dotenv\Dotenv;
+use Symfony\Component\Yaml\Exception\ParseException;
+use Symfony\Component\Yaml\Yaml;
 
 require_once __DIR__ . '/vendor/autoload.php';
 
@@ -26,11 +28,20 @@ if ($_ENV['APP_DEBUG'])
     Debug::enable();
 }
 
+// The directory where the configuration files are.
+$dir = __DIR__ . '/config/';
+
+// Load the configuration files.
+$config['security'] = Yaml::parseFile($dir . 'security.yml');
+
 // Create a new container.
 $containerBuilder = new ContainerBuilder();
 
+// Set parameters.
+$containerBuilder->setParameter('hasher.options', $config['security']['hasher']);
+
 // Initiate a hash manager.
-$containerBuilder->register('hasher', 'XChess\Engine\Hasher');
+$containerBuilder->register('hasher', 'XChess\Engine\Hasher')->addArgument('%hasher.options%');;
 
 // Initiate a encrypter.
 $containerBuilder->register('encrypter', 'XChess\Engine\Encryption');
@@ -39,5 +50,5 @@ $containerBuilder->register('encrypter', 'XChess\Engine\Encryption');
 function app(string $service)
 {
     global $containerBuilder;
-    return $containerBuilder[$service];
+    return $containerBuilder->get($service);
 }
